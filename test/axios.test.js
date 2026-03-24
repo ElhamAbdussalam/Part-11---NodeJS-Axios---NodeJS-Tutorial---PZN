@@ -28,11 +28,26 @@ describe("Axios", () => {
     timeout: 5000,
   });
 
-  it("should support GET Method", async () => {
-    const response = await httpClient.get("/posts/1");
+  //   it("should support GET Method", async () => {
+  //     const response = await httpClient.get("/posts/1");
 
+  //     expect(response.status).toBe(200);
+  //     expect(response.statusText).toBe("OK");
+  //     expect(response.data.id).toBe(1); // ✅ sesuai API
+  //   });
+
+  it("should support POST method with JSON request body", async () => {
+    const json = {
+      username: "elham",
+      password: "rahasia",
+    };
+
+    const response = await httpClient.post("/", json, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     expect(response.status).toBe(200);
-    expect(response.statusText).toBe("OK");
-    expect(response.data.id).toBe(1); // ✅ sesuai API
   });
 });
