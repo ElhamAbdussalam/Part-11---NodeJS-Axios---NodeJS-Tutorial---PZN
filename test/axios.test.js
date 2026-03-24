@@ -22,20 +22,17 @@ import * as axios from "axios";
 //   });
 // });
 
-describe("HTTP Request", () => {
+describe("Axios", () => {
   const httpClient = axios.create({
-    baseURL: "https://elhamabdussalam.vercel.app/",
+    baseURL: "https://jsonplaceholder.typicode.com",
     timeout: 5000,
   });
+
   it("should support GET Method", async () => {
-    const response = await httpClient.get("/", {
-      params: {
-        name: "Eko",
-      },
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const response = await httpClient.get("/posts/1");
+
     expect(response.status).toBe(200);
+    expect(response.statusText).toBe("OK");
+    expect(response.data.id).toBe(1); // ✅ sesuai API
   });
 });
