@@ -10,14 +10,32 @@ import * as axios from "axios";
 //   });
 // });
 
-describe("HTTP Method", () => {
+// describe("HTTP Method", () => {
+//   const httpClient = axios.create({
+//     baseURL: "https://elhamabdussalam.vercel.app/",
+//     timeout: 5000,
+//   });
+
+//   it("should support GET Method", async () => {
+//     const response = await httpClient.get("/");
+//     expect(response.status).toBe(200);
+//   });
+// });
+
+describe("HTTP Request", () => {
   const httpClient = axios.create({
     baseURL: "https://elhamabdussalam.vercel.app/",
     timeout: 5000,
   });
-
   it("should support GET Method", async () => {
-    const response = await httpClient.get("/");
+    const response = await httpClient.get("/", {
+      params: {
+        name: "Eko",
+      },
+      headers: {
+        Accept: "application/json",
+      },
+    });
     expect(response.status).toBe(200);
   });
 });
